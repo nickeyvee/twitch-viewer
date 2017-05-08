@@ -1,0 +1,7 @@
+.panel {
+    padding: 10px;
+}
+input {
+    border-radius: 5px;
+    border: solid grey 1px;
+}
