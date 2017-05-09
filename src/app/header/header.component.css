@@ -1,7 +1,11 @@
 nav {
     margin: 0;
+    border: none;
     border-radius: 0;
 }
-a {
-    text-align: center;
+li {
+    padding-top: 15px;
+}
+.container-fluid {
+    padding: 0;
 }
