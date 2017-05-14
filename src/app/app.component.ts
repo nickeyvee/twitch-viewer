@@ -18,5 +18,8 @@ import { UserComponent } from './user/user.component';
   `]
 })
 export class AppComponent {
-
+  usernames = [ {name:"ESL_SC2"}, {name: "OgamingSC2"}, {name: "cretetion"},
+   {name: "freecodecamp"} ,{name: "storbeck"}, {name: "habathcx"}, {name: "RobotCaleb"},
+    {name: "comster404"}, {name: "brunofin"}, {name: "adobe"}];
+  
 }
