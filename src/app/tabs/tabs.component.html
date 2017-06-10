@@ -1,0 +1,28 @@
+ <div class="container-fluid">
+      <ul class="nav nav-tabs list-inline center-block text-center">
+        <li 
+          id="all" 
+          class="btn btn-tab col-xs-3" 
+          (click)="onTabChange($event)"
+          [ngClass]="{active: tab === 'all'}">All</li>
+        <li 
+          id="online" 
+          class="btn btn-tab col-xs-3" 
+          (click)="onTabChange($event)"
+          [ngClass]="{active: tab === 'online'}">Online</li>
+        <li 
+          id="offline" 
+          class="btn btn-tab col-xs-3"
+          (click)="onTabChange($event)"
+          [ngClass]="{active: tab === 'offline'}">Offline</li>
+        <li 
+          id="favorites" 
+          class="btn btn-tab col-xs-3"
+          (click)="onTabChange($event)"
+          [ngClass]="{active: tab === 'favorites'}">Favorite</li>
+      </ul>
+  </div>
+  <!--<app-user 
+    *ngFor="let users of usernames"
+    [usernames]="user">
+  </app-user>-->

@@ -1,14 +1,15 @@
-<div class="container-fluid">
+<div class="container-fluid" onload="loadUsers()">
   <div class="row">
-    <div class="col-xs-12">
-      <h2><i class="fa fa-twitch"></i> Twitch</h2>
-    </div>
+  <div class="col-xs-12">
+    <h2><i class="fa fa-twitch"></i> Twitch</h2>
   </div>
-    <app-header></app-header>
-    <app-search></app-search>
-    <hr>
-    <app-user 
-      *ngFor="let user of usernames"
-      [usernames]="user"></app-user>
+</div>
+  <app-search></app-search>
+  <app-tabs [current]="currentTab">
+  </app-tabs>
+  <app-user 
+    *ngFor="let users of usernames"
+    [usernames]="users">
+  </app-user>
 </div>
 

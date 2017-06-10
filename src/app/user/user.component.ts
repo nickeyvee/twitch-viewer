@@ -6,7 +6,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent {
-  // will recive individual names from the parent component
   @Input("usernames") user: { name: string };
+  // will recive individual names from the parent component
+  //@Input("usernames") user: { name: string };
 
 }
