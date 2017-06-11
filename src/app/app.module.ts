@@ -5,19 +5,18 @@ import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
-import { UserComponent } from './user/user.component';
-import { CockpitComponent } from './cockpit/cockpit.component';
+import { UserComponent } from './users/user/user.component';
 import { TabsComponent } from './tabs/tabs.component';
 
-import { UserService } from "app/services/user.service";
 import { DataService } from "app/data.service";
+import { UsersComponent } from "app/users/users.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
+    UsersComponent,
     UserComponent,
-    CockpitComponent,
     TabsComponent
   ],
   imports: [
@@ -26,7 +25,7 @@ import { DataService } from "app/data.service";
     HttpModule,
     JsonpModule
   ],
-  providers: [UserService, DataService],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

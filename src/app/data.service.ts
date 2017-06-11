@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
-import { Http, Jsonp } from "@angular/http";
+import { Http, Jsonp, Response } from "@angular/http";
+import { Observable } from "rxjs/Rx";
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class DataService {
@@ -10,24 +12,38 @@ export class DataService {
     callback: string = "?client_id=75d3ro6frttsp0kmj24osvylzyib5db";
 
 
-    constructor(  private jsonp: Jsonp ) { }
+    constructor( private jsonp: Jsonp, private http: Http ) { }
 
     getStreams( channel: string ) {
         const urlStream: string = this.URL + this.streams + channel + this.callback;
 
-        return this.jsonp.get( urlStream ).subscribe(
-            res  => res.json(),
-            error => console.log( error )
+        return this.http.get( urlStream ).map(
+            ( response: Response ) => response.json()
+            ,
+            error => {
+                if( error.status === 422 ) {
+                    console.log( channel + " does not exist!");
+                } else if ( error.status === 404 ) {
+                    console.log( channel + " was not found!");
+                }
+            }
         )
     }
 
-    getUsers( channel:string ) {
+    getUsers( channel: string ) {
         const urlUsers: string = this.URL + this.users + channel + this.callback;
         console.log( urlUsers );
 
-        return this.jsonp.get( urlUsers ).subscribe(
-            res  => res.json(),
-            error => console.log( error )
+        return this.http.get( urlUsers ).map(
+            ( response: Response ) => response.json()
+            ,
+            error => {
+                if( error.status === 422 ) {
+                    console.log( channel + " does not exist!");
+                } else if ( error.status === 404 ) {
+                    console.log( channel + " was not found!");
+                }
+            }
         )
     }
 }

@@ -1,7 +1,7 @@
 import { Component , OnInit } from '@angular/core';
 import { TabsComponent } from './tabs/tabs.component';
 import { SearchComponent } from './search/search.component';
-import { UserComponent } from './user/user.component';
+import { UsersComponent } from 'app/users/users.component';
 import { DataService } from "app/data.service";
 
 @Component({
@@ -21,30 +21,11 @@ import { DataService } from "app/data.service";
 })
 
 export class AppComponent implements OnInit {
-
-  channelNames: string [];
-  getUserList: any;
-  getStreamsList: any;
   
-  constructor( private dataService: DataService ) {
-    this.channelNames = this.dataService.default;
-    this.getUserList = this.dataService.getStreams;
-    this.getStreamsList = this.getStreamsList;
-  }
+  constructor( ) { }  
 
 
-ngOnInit () {
-    console.log( "fetched default user info" );
-    for( let user of this.channelNames ) {
+  ngOnInit () {
 
-        let userStatus: boolean;
-        let userName: string = user;
-        let activity: string;
-        let logo: string;
-
-        console.log( user );
-        
-        this.dataService.getUsers( userName );
-    }
   }
 }
