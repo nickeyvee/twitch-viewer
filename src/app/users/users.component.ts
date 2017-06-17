@@ -6,19 +6,20 @@ import { UserSchema } from "app/models/user.model";
 @Component({
   selector: 'app-users',
   providers: [ DataService ],
-  template: `<h2> Users component works! </h2>`
+  templateUrl: "/users.component.html"
 })
 
 export class UsersComponent implements OnInit {
   channelNames: string [];
-  userList: UserSchema[] = [];
-  
+  allUsersList: UserSchema[] = [];
+  filteredList: UserSchema[];
+
   constructor( private dataService: DataService ) {
     this.channelNames = this.dataService.default;
   }
 
-logResults( item : any ) {
-  console.log( item );
+logResults() {
+  return console.log( this.allUsersList );
 }
 
 
@@ -33,35 +34,34 @@ ngOnInit () {
 
       this.dataService.getStreams( user ).subscribe(
         data => {
-          console.log( data )
-          console.log(
-             "stream : " + data.stream + "\n" +
-             "is streaming? : " + data.stream === null + "\n" +
-             "typeof 'null' : ", typeof data.stream
-          );
 
           if ( data.stream ) {
             isActive = true; 
             activity = data.stream.game;
-          } else 
+          } else {
             isActive = false;
             activity = "offline";
+          }
+          this.dataService.getUsers( user ).subscribe(
+            data => {
+              userName = data.display_name;
+
+              data.logo === null ? logo = "http://4.bp.blogspot.com/-Zzu7j6aQk-k/UkATzmjQqhI/AAAAAAAABBk/ofjNB5YQMLM/s1600/facebook-default--profile-pic6.jpg" 
+              : logo = data.logo;
+
+              this.allUsersList.push({
+                userName,
+                activity,
+                isActive,
+                logo
+              });
+            }
+          )
         }
       )
-      this.dataService.getUsers( user ).subscribe(
-        data => {
-          //console.log( data )
-          userName = data.display__name;
-          logo = data.logo;
-        }
-      )
-      this.userList.push({
-        userName,
-        isActive,
-        activity,
-        logo
-      })
     }
-    this.logResults( this.userList );
+  }
+  onTabChange( currentTab: string ) {
+    console.log( currentTab );
   }
 }

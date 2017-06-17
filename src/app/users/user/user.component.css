@@ -1,0 +1,12 @@
+li {
+    list-style: none;
+}
+img {
+    width: 65px;
+    height: 65px;
+    border-radius: 25%;
+}
+.panel {
+    margin: 15px;
+    height: 85px;
+}

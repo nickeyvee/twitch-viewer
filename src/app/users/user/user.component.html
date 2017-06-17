@@ -1,15 +1,17 @@
-<div class="panel">
-  <div class="row">
-    <div class="col-xs-4">
-      <a href="#">
-      <img [src]=" " alt="" class="">
-      </a>
+<ul>
+  <li *ngFor="let user of userList" >
+    <div class="panel" >
+      <div class="row">
+        <div class="col-xs-4">
+          <a href="#">
+          <img src="{{ user.logo }}" alt="" class="">
+          </a>
+        </div>
+        <div id="username" class="col-xs-4">
+          <h4>{{ user.userName }}</h4>
+          <p>{{ user.activity }}</p>
+        </div>
+      </div>
     </div>
-    <div id="username" class="col-xs-4">
-      <h4>{{ user.name }}</h4>
-    </div>
-    <div id="status" class="col-xs-3">
-      <p>What the user is doing</p>
-    </div>
-  </div>
-</div>
+  </li>
+</ul>

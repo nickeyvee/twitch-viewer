@@ -5,11 +5,12 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class DataService {
-    URL: string = "https://api.twitch.tv/kraken/";
-    streams: string = "streams/"
-    users: string = "users/"
+
+    private URL: string = "https://api.twitch.tv/kraken/";
+    private streams: string = "streams/"
+    private users: string = "users/"
+    private callback: string = "?client_id=75d3ro6frttsp0kmj24osvylzyib5db";
     default: string[] = [ "ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb","comster404","brunofin", "adobe"];
-    callback: string = "?client_id=75d3ro6frttsp0kmj24osvylzyib5db";
 
 
     constructor( private jsonp: Jsonp, private http: Http ) { }
@@ -32,7 +33,6 @@ export class DataService {
 
     getUsers( channel: string ) {
         const urlUsers: string = this.URL + this.users + channel + this.callback;
-        console.log( urlUsers );
 
         return this.http.get( urlUsers ).map(
             ( response: Response ) => response.json()
